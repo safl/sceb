@@ -1,0 +1,66 @@
+# Limits on plots, this is to ensure that different plots are visually comparable
+limits:
+  barplot:
+    y_lim: [0, 140000]
+  lineplot:
+    y_lim: [0, 240000]
+
+# Identifying colors and markers by dataset-label
+datasets:
+  # Reference implementations
+  libaio-reference:
+    color: "#084594"
+    marker: "s" # square
+    hatch: "."
+
+  io_uring-reference:
+    color: "#2171b5"
+    marker: "v" # triangle_down
+    hatch: "."
+
+  io_uring_cmd-reference:
+    color: "#2171b5"
+    marker: "P" # plus
+    hatch: "."
+
+  # xNVMe implementations
+  libaio-xnvme:
+    color: "#005a32"
+    marker: "p" # pentagon
+    hatch: "."
+
+  libaio-bdev_xnvme:
+    color: "#238b45"
+    marker: "X" # cross
+    hatch: "O"
+
+  io_uring-xnvme:
+    color: "#41ab5d"
+    marker: "*" # star
+    hatch: "."
+
+  io_uring-bdev_xnvme:
+    color: "#74c476"
+    marker: "h" # hexagon1
+    hatch: "O"
+
+  io_uring_cmd-xnvme:
+    color: "#74c476"
+    marker: "H" # hexagon2
+    hatch: "."
+
+  io_uring_cmd-bdev_xnvme:
+    color: "#c7e9c0"
+    marker: "o" # circle
+    hatch: "O"
+
+  # SPDK bdev implementations
+  libaio-bdev_aio:
+    color: "#4a1486"
+    marker: "D" # diamond
+    hatch: "O"
+
+  io_uring-bdev_uring:
+    color: "#807dba"
+    marker: "d" # thin_diamond
+    hatch: "O"
