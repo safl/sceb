@@ -52,6 +52,21 @@ def main(args, cijoe, step):
                 },
             },
         },
+        "io_uring_cmd-bdev_xnvme_SOP": {
+            "engine": "spdk_bdev",
+            "device": cdev,
+            "xnvme_opts": {},
+            "spdk_opts": {
+                "bdev": "xnvme",
+                "params": {
+                    "filename": cdev["uri"],
+                    "name": "Nvme0n1",
+                    "io_mechanism": "io_uring_cmd",
+                    # "conserve_cpu": False,
+                    # "conserve_cpu": True,
+                },
+            },
+        },
     }
 
     impl_io_uring = {
@@ -85,6 +100,21 @@ def main(args, cijoe, step):
                 },
             },
         },
+        "io_uring-bdev_xnvme_SOP": {
+            "engine": "spdk_bdev",
+            "device": bdev,
+            "xnvme_opts": {},
+            "spdk_opts": {
+                "bdev": "xnvme",
+                "params": {
+                    "filename": bdev["uri"],
+                    "name": "Nvme0n1",
+                    "io_mechanism": "io_uring",
+                    # "conserve_cpu": False,
+                    # "conserve_cpu": True,
+                },
+            },
+        },
         "io_uring-xnvme": {
             "engine": "xnvme",
             "device": bdev,
@@ -100,6 +130,12 @@ def main(args, cijoe, step):
 
     impl_libaio = {
         "libaio-reference": {
+            "engine": "libaio",
+            "device": bdev,
+            "xnvme_opts": {},
+            "spdk_opts": {},
+        },
+        "libaio-userspace-reap": {
             "engine": "libaio",
             "device": bdev,
             "xnvme_opts": {},
@@ -167,7 +203,23 @@ def main(args, cijoe, step):
         for (bs, iodepth, (label, params), rep) in product(
             iosizes, iodepths, implementation.items(), range(repetitions)
         ):
+            env = {}
+            aux = {
+                "bs": str(bs),
+                "iodepth": str(iodepth),
+                "name": label,
+                "cpus_allowed": "1",
+            }
+            if "SOP" in label:
+                env["XNVME_QUEUE_SOP"] = "1"
+
+
+            if "userspace-reap" in label:
+                aux["userspace_reap"] = "1"
+
+
             fio_output_path = Path(f"/tmp/fio-output_{bs}_{iodepth}_{label}_{rep}.txt")
+
             err, state = fio_fancy(
                 cijoe,
                 fio_output_path,
@@ -176,12 +228,8 @@ def main(args, cijoe, step):
                 params["device"],
                 xnvme_opts=params["xnvme_opts"],
                 spdk_opts=params["spdk_opts"],
-                aux={
-                    "bs": str(bs),
-                    "iodepth": str(iodepth),
-                    "name": label,
-                    "cpus_allowed": "1",
-                },
+                aux=aux,
+                env=env,
             )
     except Exception as exc:
         log.error(f"Something failed({exc})")

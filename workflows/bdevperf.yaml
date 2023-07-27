@@ -20,5 +20,5 @@ steps:
   uses: bdevperf
   with:
     repetitions: 3
-    iosizes: ['4K']
+    iosizes: ['4096']
     iodepths: [1, 2, 4, 8]

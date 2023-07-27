@@ -3,7 +3,7 @@ limits:
   barplot:
     y_lim: [0, 195000]
   lineplot:
-    y_lim: [0, 1200000]
+    y_lim: [400000, 4000000]
 
 # Identifying colors and markers by dataset-label
 datasets:
@@ -35,7 +35,13 @@ datasets:
 
   libaio-bdev_xnvme:
     legend: 'libaio ($\bf{bdev\_xnvme}$)'
-    color: "#238b45"
+    color: "#297373"
+    marker: "X" # cross
+    hatch: "O"
+
+  libaio-bdev_xnvme_conserve_cpu:
+    legend: 'libaio ($\bf{bdev\_xnvme}$) CCPU'
+    color: "#E9D758"
     marker: "X" # cross
     hatch: "O"
 
@@ -47,9 +53,27 @@ datasets:
 
   io_uring-bdev_xnvme:
     legend: 'io_uring ($\bf{bdev\_xnvme}$)'
-    color: "#74c476"
+    color: "#297373"
     marker: "h" # hexagon1
     hatch: "O"
+
+  io_uring-bdev_xnvme_conserve_cpu:
+    legend: 'io_uring ($\bf{bdev\_xnvme}$) CCPU'
+    color: "#E9D758"
+    marker: "h" # hexagon1
+    hatch: "O"
+
+  io_uring-bdev_xnvme_SOP:
+    legend: 'io_uring ($\bf{bdev\_xnvme}$) SOP'
+    color: "#FF8552"
+    marker: "D" # diamond
+    hatch: "*"
+
+  io_uring-bdev_xnvme_conserve_cpu_SOP:
+    legend: 'io_uring ($\bf{bdev\_xnvme}$) CCPU SOP'
+    color: "#39393A"
+    marker: "D" # diamond
+    hatch: "*"
 
   io_uring_cmd-xnvme:
     legend: 'io_uring_cmd ($\bf{xnvme}$)'
@@ -59,9 +83,27 @@ datasets:
 
   io_uring_cmd-bdev_xnvme:
     legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$)'
-    color: "#c7e9c0"
+    color: "#297373"
     marker: "o" # circle
     hatch: "O"
+    
+  io_uring_cmd-bdev_xnvme_conserve_cpu:
+    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) CCPU'
+    color: "#E9D758"
+    marker: "o" # circle
+    hatch: "O"
+
+  io_uring_cmd-bdev_xnvme_SOP:
+    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) SOP'
+    color: "#FF8552"
+    marker: "d" # thin_diamond
+    hatch: "*"
+
+  io_uring_cmd-bdev_xnvme_conserve_cpu_SOP:
+    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) CCPU SOP'
+    color: "#39393A"
+    marker: "d" # thin_diamond
+    hatch: "*"
 
   # SPDK bdev implementations
   libaio-bdev_aio:

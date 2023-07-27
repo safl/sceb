@@ -25,6 +25,18 @@ def main(args, cijoe, step):
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring_cmd",
         },
+        "io_uring_cmd-bdev_xnvme_SOP": {
+            "bdev_name": "bdev_xnvme",
+            "io_mechanism": "io_uring_cmd",
+        },
+        "io_uring_cmd-bdev_xnvme_conserve_cpu": {
+            "bdev_name": "bdev_xnvme",
+            "io_mechanism": "io_uring_cmd",
+        },
+        "io_uring_cmd-bdev_xnvme_conserve_cpu_SOP": {
+            "bdev_name": "bdev_xnvme",
+            "io_mechanism": "io_uring_cmd",
+        },
         "io_uring-bdev_uring": {
             "bdev_name": "bdev_uring",
             "io_mechanism": "io_uring",
@@ -33,11 +45,27 @@ def main(args, cijoe, step):
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring",
         },
+        "io_uring-bdev_xnvme_SOP": {
+            "bdev_name": "bdev_xnvme",
+            "io_mechanism": "io_uring",
+        },
+        "io_uring-bdev_xnvme_conserve_cpu": {
+            "bdev_name": "bdev_xnvme",
+            "io_mechanism": "io_uring",
+        },
+        "io_uring-bdev_xnvme_conserve_cpu_SOP": {
+            "bdev_name": "bdev_xnvme",
+            "io_mechanism": "io_uring",
+        },
         "libaio-bdev_aio": {
             "bdev_name": "bdev_aio",
             "io_mechanism": "libaio",
         },
         "libaio-bdev_xnvme": {
+            "bdev_name": "bdev_xnvme",
+            "io_mechanism": "libaio",
+        },
+        "libaio-bdev_xnvme_conserve_cpu": {
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "libaio",
         },
@@ -61,11 +89,15 @@ def main(args, cijoe, step):
                 [
                     params["bdev_name"],
                     params["io_mechanism"],
+                    "conserve_cpu" if "conserve_cpu" in label else "",
                     f"{ndevices}.conf",
                 ]
             )
 
             env = {}
+            if "SOP" in label:
+                env["XNVME_QUEUE_SOP"] = "1"
+
             if "io_uring_cmd" in label:
                 env["XNVME_QUEUE_SQPOLL_AWQ"] = "1"
                 env["XNVME_QUEUE_SQPOLL_CPU"] = "2"
@@ -75,7 +107,7 @@ def main(args, cijoe, step):
 
             # Run bdevperf
             command = [
-                "/root/git/spdk/test/bdev/bdevperf/bdevperf",
+                "/root/git/spdk/build/examples/bdevperf",
                 f"--json {spdk_conf_path}",
                 f"-q {iodepth}",
                 f"-o {bs}",

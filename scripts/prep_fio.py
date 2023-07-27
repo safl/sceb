@@ -17,7 +17,7 @@ def main(args, cijoe, step):
     commands = [
         "git rev-parse --short HEAD",
         "make clean",
-        f"./configure --disable-xnvme --prefix={ cijoe.config.options['fio']['build']['prefix'] }",
+        f"./configure --prefix={ cijoe.config.options['fio']['build']['prefix'] }",
         # f"./configure --prefix={ cijoe.config.options['fio']['build']['prefix'] }",
         "make -j $(nproc)",
         "make install",

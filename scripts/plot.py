@@ -41,7 +41,7 @@ FIO_OUTPUT_NORMALIZED_FILENAME = "fio-output-normalize.json"
 BDEVPERF_OUTPUT_PREFIX = "bdevperf-output_"
 BDEVPERF_OUTPUT_NORMALIZED_FILENAME = "bdevperf-output-normalized.json"
 OUTPUT_REGEX = r".*BS=(?P<bs>.*)_IODEPTH=(?P<iodepth>\d+)_LABEL=(?P<label>.*)_\d+.txt"
-LINE_REGEX = r".*Total\s+\:\s+(?P<iops>\d+\.\d+)\s+IOPS\s+(?P<bwps>\d+\.\d+)\sMiB\/s.*"
+LINE_REGEX = r".*Total\s+\:\s+(?P<iops>\d+\.\d+)\s+\s+(?P<bwps>\d+\.\d+)\s+\d+\.\d+\s+\d+\.\d+\s+(?P<lat>\d+\.\d+).*"
 
 
 def extract_bdevperf(args, cijoe, step):
@@ -131,7 +131,10 @@ def extract(args, cijoe, step):
 
         compound[path.stem] = jsondict
 
-    with (search / FIO_COMPOUND_FILENAME).open("w") as jfd:
+    
+    artifacts = search / "artifacts"
+
+    with (artifacts / FIO_COMPOUND_FILENAME).open("w") as jfd:
         json.dump(compound, jfd, **JSON_DUMP)
         log.info(f"wrote: {jfd.name}")
 
@@ -157,7 +160,7 @@ def normalize(args, cijoe, step):
             "bs": options["bs"],
             "rw": options["rw"],
             "size": options["size"],
-            "iodepth": options["iodepth"],
+            "iodepth": int(options["iodepth"]),
             "filename": options["filename"],
             "stem": stem,
         }

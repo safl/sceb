@@ -1,5 +1,5 @@
 [transport.ssh]
-hostname = "106.110.32.96"
+hostname = "106.110.32.91"
 port = 22
 username = "root"
 
@@ -159,7 +159,7 @@ tag = "liburing-2.2"
 [xnvme.repository]
 remote = "https://github.com/karlowich/xNVMe.git"
 path = "/root/git/xnvme"
-branch = "karlo-sauce"
+branch = "uring-cqe-peek"
 
 [xnvme.build]
 type = "debug"
@@ -167,7 +167,7 @@ type = "debug"
 [spdk.repository]
 remote = "https://github.com/karlowich/spdk.git"
 path = "/root/git/spdk"
-branch = "karlo-sauce"
+branch = "uring-cqe-peek"
 
 [spdk.build]
 prefix = "/opt/spdk"
@@ -204,67 +204,49 @@ path = "/root/git/spdk/build/fio/spdk_bdev"
 type = "external_preload"
 
 [[duts]]
-pcie = "0000:08:00.0"
+pcie = "0000:01:00.0"
 os = "0n1"
-sn = "PHBT718003QR016D"
-label = "M10_16GB"
+sn = "S69ENX0T810892F"
+label = "980PRO_2TB"
+
+[[duts]]
+pcie = "0000:02:00.0"
+os = "1n1"
+sn = "S5GXNX0T875424D"
+label = "980PRO_1TB"
+
+[[duts]]
+pcie = "0000:03:00.0"
+os = "2n1"
+sn = "S6WSNS0T207605K"
+label = "980PRO_1TB"
+
+[[duts]]
+pcie = "0000:05:00.0"
+os = "3n1"
+sn = "S5GXNX0T811825D"
+label = "980PRO_1TB"
+
+[[duts]]
+pcie = "0000:06:00.0"
+os = "4n1"
+sn = "S69ENX0T805102B"
+label = "980PRO_2TB"
+
+[[duts]]
+pcie = "0000:07:00.0"
+os = "5n1"
+sn = "S69ENX0T805226J"
+label = "980PRO_2TB"
 
 [[duts]]
 pcie = "0000:09:00.0"
-os = "1n1"
-sn = "BTBT84921Y3W016N"
-label = "M10_16GB"
+os = "6n1"
+sn = "S69ENX0T805189F"
+label = "980PRO_2TB"
 
 [[duts]]
 pcie = "0000:0a:00.0"
-os = "2n1"
-sn = "PHBT813407Z8016D"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:41:00.0"
-os = "3n1"
-sn = "PHBT81350074016D"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:42:00.0"
-os = "4n1"
-sn = "PHBT813407T8016D"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:43:00.0"
-os = "5n1"
-sn = "PHBT813407ZW016D"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:44:00.0"
-os = "6n1"
-sn = "PHBT81350076016D"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:45:00.0"
 os = "7n1"
-sn = "PHBT813407U6016D"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:46:00.0"
-os = "8n1"
-sn = "PHBT718003QW016D"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:47:00.0"
-os = "9n1"
-sn = "BTBT84921FM7016N"
-label = "M10_16GB"
-
-[[duts]]
-pcie = "0000:48:00.0"
-os = "10n1"
-sn = "PHBT8134068W016D"
-label = "M10_16GB"
+sn = "S5GXNX0T875423K"
+label = "980PRO_1TB"

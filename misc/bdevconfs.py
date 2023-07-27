@@ -26,16 +26,37 @@ IOPATHS = {
     "xnvme_libaio": {
         "bdev_name": "bdev_xnvme",
         "io_mechanism": "libaio",
+        "conserve_cpu": False,
+        "method": "bdev_xnvme_create",
+    },
+    "xnvme_libaio_conserve_cpu": {
+        "bdev_name": "bdev_xnvme",
+        "io_mechanism": "libaio",
+        "conserve_cpu": True,
         "method": "bdev_xnvme_create",
     },
     "xnvme_io_uring": {
         "bdev_name": "bdev_xnvme",
         "io_mechanism": "io_uring",
+        "conserve_cpu": False,
+        "method": "bdev_xnvme_create",
+    },
+    "xnvme_io_uring_conserve_cpu": {
+        "bdev_name": "bdev_xnvme",
+        "io_mechanism": "io_uring",
+        "conserve_cpu": True,
         "method": "bdev_xnvme_create",
     },
     "xnvme_io_uring_cmd": {
         "bdev_name": "bdev_xnvme",
         "io_mechanism": "io_uring_cmd",
+        "conserve_cpu": False,
+        "method": "bdev_xnvme_create",
+    },
+    "xnvme_io_uring_cmd_conserve_cpu": {
+        "bdev_name": "bdev_xnvme",
+        "io_mechanism": "io_uring_cmd",
+        "conserve_cpu": True,
         "method": "bdev_xnvme_create",
     },
 }
@@ -75,7 +96,7 @@ def gen_bdev_confs(args):
             # Parameters, for xNVMe
             if "xnvme" in iopath_label:
                 params["io_mechanism"] = f"{iopath['io_mechanism']}"
-                # params["conserve_cpu"] = False
+                params["conserve_cpu"] = iopath['conserve_cpu']
 
             bdevs["config"].append(
                 {
@@ -92,6 +113,7 @@ def gen_bdev_confs(args):
                 [
                     f"{iopath['bdev_name']}",
                     f"{iopath['io_mechanism']}",
+                    "conserve_cpu" if "xnvme" in iopath_label and iopath["conserve_cpu"] else "", 
                     f"{count}.conf",
                 ]
             )

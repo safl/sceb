@@ -27,7 +27,7 @@ def main(args, cijoe, step):
     commands = [
         "git rev-parse --short HEAD",
         "rm -r builddir || true",
-        "meson setup builddir -Dwith-spdk=false",
+        "meson setup builddir -Dwith-spdk=false -Dwith-libvfn=false --prefix=/usr",
         "cd builddir && meson compile",
         "cd builddir && meson install",
         "cd builddir && meson --internal uninstall",

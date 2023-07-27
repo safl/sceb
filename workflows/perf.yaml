@@ -18,11 +18,10 @@ steps:
 - name: bdevperf
   uses: bdevperf
   with:
-    repetitions: 1
+    repetitions: 3
     iosizes: ['512']
-    iodepths: [1, 128]
-    bdev_confs: /root/bdevconfs
-    ndevices: 1
+    iodepths: [1, 2, 4, 8, 16, 32, 64]
+    ndevices: 7
 
 - name: plot_bdevperf
   uses: plot
@@ -31,16 +30,17 @@ steps:
     tool: bdevperf
     plot_attributes: plot-attributes-512.yaml
 
-- name: fio
-  uses: fioe
-  with:
-    repetitions: 1
-    iosizes: ['512']
-    iodepths: [1, 128]
+# - name: fio
+#   uses: fioe
+#   with:
+#     repetitions: 1
+#     iosizes: ['512']
+#     iodepths: [1, 2, 4, 8, 16, 32, 64, 128]
+#     ndevices: 1
 
-- name: plot_fio
-  uses: plot
-  with:
-    path: cijoe-output
-    tool: fio
-    plot_attributes: plot-attributes-512.yaml
+# - name: plot_fio
+#   uses: plot
+#   with:
+#     path: cijoe-output
+#     tool: fio
+#     plot_attributes: plot-attributes-512.yaml
