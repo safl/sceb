@@ -15,37 +15,37 @@ doc: |
   See Artifacts for the generated plots
 
 steps:
-# - name: prep_repos
-#   uses: core.repository_prep
+- name: prep_repos
+  uses: core.repository_prep
 
-# - name: packages
-#   run: |
-#     cd /root/git/xnvme/ && ./toolbox/pkgs/debian-bullseye.sh
+- name: packages
+  run: |
+    cd /root/git/xnvme/ && ./toolbox/pkgs/debian-bullseye.sh
 
-# - name: prep_xnvme
-#   uses: prep_xnvme
+- name: prep_xnvme
+  uses: prep_xnvme
 
-# - name: prep_fio
-#   uses: prep_fio
+- name: prep_fio
+  uses: prep_fio
 
-# - name: prep_spdk
-#   uses: prep_spdk
+- name: prep_spdk
+  uses: prep_spdk
 
-# - name: prep_driver
-#   run: |
-#     xnvme-driver || true
-#     xnvme-driver reset || true
+- name: prep_driver
+  run: |
+    xnvme-driver || true
+    xnvme-driver reset || true
 
-# - name: info
-#   uses: linux.sysinfo
+- name: info
+  uses: linux.sysinfo
 
 - name: bdevperf
   uses: bdevperf
   with:
     repetitions: 1
-    iosizes: ['512']
-    iodepths: [128]
-    ndevices: 8
+    iosizes: ['4096']
+    iodepths: [1, 2, 4, 8, 16, 32, 64]
+    ndevices: 7
     bdev_confs: /root/bdevconfs
 
 # - name: fio
@@ -67,4 +67,4 @@ steps:
   with:
     path: cijoe-output
     tool: bdevperf
-    plot_attributes: plot-attributes-512.yaml
+    plot_attributes: plot-attributes-4k.yaml

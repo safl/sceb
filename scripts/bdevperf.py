@@ -25,7 +25,7 @@ def main(args, cijoe, step):
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring_cmd",
         },
-        "io_uring_cmd-bdev_xnvme_SOP": {
+        "io_uring_cmd-bdev_xnvme_BATCH": {
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring_cmd",
         },
@@ -33,7 +33,7 @@ def main(args, cijoe, step):
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring_cmd",
         },
-        "io_uring_cmd-bdev_xnvme_conserve_cpu_SOP": {
+        "io_uring_cmd-bdev_xnvme_conserve_cpu_BATCH": {
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring_cmd",
         },
@@ -45,7 +45,7 @@ def main(args, cijoe, step):
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring",
         },
-        "io_uring-bdev_xnvme_SOP": {
+        "io_uring-bdev_xnvme_BATCH": {
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring",
         },
@@ -53,7 +53,7 @@ def main(args, cijoe, step):
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring",
         },
-        "io_uring-bdev_xnvme_conserve_cpu_SOP": {
+        "io_uring-bdev_xnvme_conserve_cpu_BATCH": {
             "bdev_name": "bdev_xnvme",
             "io_mechanism": "io_uring",
         },
@@ -95,8 +95,8 @@ def main(args, cijoe, step):
             )
 
             env = {}
-            if "SOP" in label:
-                env["XNVME_QUEUE_SOP"] = "1"
+            if "BATCH" in label:
+                env["XNVME_QUEUE_BATCHING"] = "1"
 
             if "io_uring_cmd" in label:
                 env["XNVME_QUEUE_SQPOLL_AWQ"] = "1"

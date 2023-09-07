@@ -3,7 +3,7 @@ limits:
   barplot:
     y_lim: [0, 140000]
   lineplot:
-    y_lim: [100000, 1800000]
+    y_lim: [100000, 4000000]
 
 # Identifying colors and markers by dataset-label
 datasets:
@@ -52,25 +52,25 @@ datasets:
     hatch: "."
 
   io_uring-bdev_xnvme:
-    legend: 'io_uring ($\bf{bdev\_xnvme}$)'
+    legend: 'uring $\bf{bdev\_xnvme}$'
     color: "#297373"
     marker: "h" # hexagon1
     hatch: "O"
 
   io_uring-bdev_xnvme_conserve_cpu:
-    legend: 'io_uring ($\bf{bdev\_xnvme}$) CCPU'
+    legend: 'uring $\bf{bdev\_xnvme}$ CCPU'
     color: "#E9D758"
     marker: "h" # hexagon1
     hatch: "O"
 
-  io_uring-bdev_xnvme_SOP:
-    legend: 'io_uring ($\bf{bdev\_xnvme}$) SOP'
+  io_uring-bdev_xnvme_BATCH:
+    legend: 'uring $\bf{bdev\_xnvme}$ BATCH'
     color: "#FF8552"
     marker: "D" # diamond
     hatch: "*"
 
-  io_uring-bdev_xnvme_conserve_cpu_SOP:
-    legend: 'io_uring ($\bf{bdev\_xnvme}$) CCPU SOP'
+  io_uring-bdev_xnvme_conserve_cpu_BATCH:
+    legend: 'uring $\bf{bdev\_xnvme}$ CCPU BATCH'
     color: "#39393A"
     marker: "D" # diamond
     hatch: "*"
@@ -82,25 +82,25 @@ datasets:
     hatch: "."
 
   io_uring_cmd-bdev_xnvme:
-    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$)'
+    legend: 'ucmd $\bf{bdev\_xnvme}$'
     color: "#297373"
     marker: "o" # circle
     hatch: "O"
     
   io_uring_cmd-bdev_xnvme_conserve_cpu:
-    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) CCPU'
+    legend: 'ucmd $\bf{bdev\_xnvme}$ CCPU'
     color: "#E9D758"
     marker: "o" # circle
     hatch: "O"
 
-  io_uring_cmd-bdev_xnvme_SOP:
-    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) SOP'
+  io_uring_cmd-bdev_xnvme_BATCH:
+    legend: 'ucmd $\bf{bdev\_xnvme}$ BATCH'
     color: "#FF8552"
     marker: "d" # thin_diamond
     hatch: "*"
 
-  io_uring_cmd-bdev_xnvme_conserve_cpu_SOP:
-    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) CCPU SOP'
+  io_uring_cmd-bdev_xnvme_conserve_cpu_BATCH:
+    legend: 'ucmd $\bf{bdev\_xnvme}$ CCPU BATCH'
     color: "#39393A"
     marker: "d" # thin_diamond
     hatch: "*"
@@ -113,7 +113,7 @@ datasets:
     hatch: "O"
 
   io_uring-bdev_uring:
-    legend: 'io_uring ($\bf{bdev\_uring}$)'
+    legend: 'uring $\bf{bdev\_uring}$'
     color: "#807dba"
     marker: "d" # thin_diamond
     hatch: "O"

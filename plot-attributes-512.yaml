@@ -63,14 +63,14 @@ datasets:
     marker: "h" # hexagon1
     hatch: "O"
 
-  io_uring-bdev_xnvme_SOP:
-    legend: 'io_uring ($\bf{bdev\_xnvme}$) SOP'
+  io_uring-bdev_xnvme_BATCH:
+    legend: 'io_uring ($\bf{bdev\_xnvme}$) BATCH'
     color: "#FF8552"
     marker: "D" # diamond
     hatch: "*"
 
-  io_uring-bdev_xnvme_conserve_cpu_SOP:
-    legend: 'io_uring ($\bf{bdev\_xnvme}$) CCPU SOP'
+  io_uring-bdev_xnvme_conserve_cpu_BATCH:
+    legend: 'io_uring ($\bf{bdev\_xnvme}$) CCPU BATCH'
     color: "#39393A"
     marker: "D" # diamond
     hatch: "*"
@@ -93,14 +93,14 @@ datasets:
     marker: "o" # circle
     hatch: "O"
 
-  io_uring_cmd-bdev_xnvme_SOP:
-    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) SOP'
+  io_uring_cmd-bdev_xnvme_BATCH:
+    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) BATCH'
     color: "#FF8552"
     marker: "d" # thin_diamond
     hatch: "*"
 
-  io_uring_cmd-bdev_xnvme_conserve_cpu_SOP:
-    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) CCPU SOP'
+  io_uring_cmd-bdev_xnvme_conserve_cpu_BATCH:
+    legend: 'io_uring_cmd ($\bf{bdev\_xnvme}$) CCPU BATCH'
     color: "#39393A"
     marker: "d" # thin_diamond
     hatch: "*"

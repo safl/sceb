@@ -52,7 +52,7 @@ def main(args, cijoe, step):
                 },
             },
         },
-        "io_uring_cmd-bdev_xnvme_SOP": {
+        "io_uring_cmd-bdev_xnvme_BATCH": {
             "engine": "spdk_bdev",
             "device": cdev,
             "xnvme_opts": {},
@@ -100,7 +100,7 @@ def main(args, cijoe, step):
                 },
             },
         },
-        "io_uring-bdev_xnvme_SOP": {
+        "io_uring-bdev_xnvme_BATCH": {
             "engine": "spdk_bdev",
             "device": bdev,
             "xnvme_opts": {},
@@ -210,8 +210,8 @@ def main(args, cijoe, step):
                 "name": label,
                 "cpus_allowed": "1",
             }
-            if "SOP" in label:
-                env["XNVME_QUEUE_SOP"] = "1"
+            if "BATCH" in label:
+                env["XNVME_QUEUE_BATCHING"] = "1"
 
 
             if "userspace-reap" in label:

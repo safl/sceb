@@ -159,7 +159,7 @@ tag = "liburing-2.2"
 [xnvme.repository]
 remote = "https://github.com/karlowich/xNVMe.git"
 path = "/root/git/xnvme"
-branch = "uring-cqe-peek"
+branch = "0.7.0-for-spdk"
 
 [xnvme.build]
 type = "debug"
@@ -167,7 +167,7 @@ type = "debug"
 [spdk.repository]
 remote = "https://github.com/karlowich/spdk.git"
 path = "/root/git/spdk"
-branch = "uring-cqe-peek"
+branch = "xnvme-0.7.0"
 
 [spdk.build]
 prefix = "/opt/spdk"
